@@ -1,0 +1,23 @@
+version: "3"
+services:
+  api-server:
+    build: api-server
+    ports:
+      - "8081:8081"
+    links:
+      - service-a
+      - service-b
+  service-a:
+    build: service-a
+    #ports:
+      # - 8876:8876
+    environment:
+      SERVICE_A: service-a
+      SERVICE_B: service-b
+  service-b:
+    build: service-b
+    # ports:
+    #   - 8875:8875
+    environment:
+      SERVICE_A: service-a
+      SERVICE_B: service-b
